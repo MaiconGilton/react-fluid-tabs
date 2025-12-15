@@ -1,7 +1,26 @@
 {
   "name": "react-fluid-tabs",
-  "version": "0.0.1",
+  "version": "0.0.3",
+  "description": "A highly performant, accessible, and swipeable tab component for React that mimics native mobile gestures",
   "type": "module",
+  "license": "MIT",
+  "author": "Maicon Gilton",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MaiconGilton/react-fluid-tabs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MaiconGilton/react-fluid-tabs/issues"
+  },
+  "keywords": [
+    "react",
+    "tabs",
+    "swipeable",
+    "mobile",
+    "gestures",
+    "accessible",
+    "typescript"
+  ],
   "main": "./dist/react-fluid-tabs.umd.js",
   "module": "./dist/react-fluid-tabs.es.js",
   "types": "./dist/index.d.ts",
