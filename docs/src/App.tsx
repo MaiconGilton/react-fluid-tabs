@@ -10,8 +10,8 @@ import {
   Zap,
 } from 'lucide-react';
 import { useState } from 'react';
+import { MobileAppExample } from './components/MobileAppExample';
 import { ThemeToggle } from './components/ThemeToggle';
-import { MobileAppExample } from './examples/MobileAppExample';
 import './App.css';
 
 function App() {
@@ -46,11 +46,12 @@ function App() {
             >
               Docs
             </a>
+
             <a
               href="https://github.com/maicongilton/react-swipeable-tabs"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 bg-gray-900 text-white hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/20 active:scale-95 dark:bg-white dark:text-black dark:hover:bg-gray-200 dark:hover:shadow-white/10"
+              className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 bg-gray-900 text-white hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/20 active:scale-95 dark:hover:shadow-primary/10"
             >
               <svg
                 viewBox="0 0 24 24"
