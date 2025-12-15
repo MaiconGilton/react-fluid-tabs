@@ -171,7 +171,7 @@ function App() {
                 <p className="text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed">
                   {isMobileMode
                     ? 'Experience native-like swipe gestures with 1:1 touch tracking and smooth 60fps animations. Try swiping between tabs or using the bottom navigation.'
-                    : 'See how tabs can transform a standard website into a mobile app experience. Toggle to mobile mode to try swipeable navigation with bottom tabs.'}
+                    : 'Desktop layout with horizontal tab navigation. Both modes use the same Tabs component—just styled differently. Toggle to mobile mode to see swipeable navigation with bottom tabs.'}
                 </p>
               </div>
 
