@@ -30,7 +30,7 @@ function App() {
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText('npm install react-swipeable-tabs');
+    navigator.clipboard.writeText('npm install react-fluid-tabs');
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 2000);
   };
@@ -41,7 +41,7 @@ function App() {
         <div className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2 md:gap-3">
             <img src="logo.svg" alt="logo" className="size-8" />
-            <span className="md:text-lg font-bold">React Swipeable Tabs</span>
+            <span className="md:text-lg font-bold">React Fluid Tabs</span>
 
             <div className="hidden sm:flex items-center px-2 py-0.5 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10">
               <span className="text-[10px] font-semibold text-gray-500 dark:text-gray-400">
@@ -59,7 +59,7 @@ function App() {
             </a>
 
             <a
-              href="https://github.com/maicongilton/react-swipeable-tabs"
+              href="https://github.com/maicongilton/react-fluid-tabs"
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 bg-gray-900 text-white hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/20 active:scale-95 dark:hover:shadow-primary/10"
@@ -90,7 +90,7 @@ function App() {
         <section className="pb-0 md:pb-20 pt-20 md:pt-40 text-center">
           <div className="container">
             <h1 className="text-3xl md:text-6xl font-extrabold tracking-tight mb-4 text-gray-900 dark:text-white">
-              React Swipeable Tabs
+              React Fluid Tabs
               <br />
               Native-Feeling Tabs for the Web
             </h1>
@@ -106,7 +106,7 @@ function App() {
             >
               <span className="select-none text-primary">$</span>
               <code className="text-gray-900 dark:text-white">
-                npm install react-swipeable-tabs
+                npm install react-fluid-tabs
               </code>
               <button
                 type="button"
@@ -220,7 +220,7 @@ function App() {
                 Documentation
               </h2>
               <p className="text-gray-600 dark:text-gray-400 text-lg">
-                Everything you need to get started with React Swipeable Tabs.
+                Everything you need to get started with React Fluid Tabs.
               </p>
             </div>
 
@@ -241,11 +241,11 @@ function App() {
                   }}
                   showLineNumbers={false}
                 >
-                  {`npm install react-swipeable-tabs
+                  {`npm install react-fluid-tabs
 # or
-yarn add react-swipeable-tabs
+yarn add react-fluid-tabs
 # or
-pnpm add react-swipeable-tabs`}
+pnpm add react-fluid-tabs`}
                 </SyntaxHighlighter>
               </div>
             </div>
@@ -270,7 +270,7 @@ pnpm add react-swipeable-tabs`}
                   }}
                   showLineNumbers={false}
                 >
-                  {`import { Tab, Tabs } from 'react-swipeable-tabs';
+                  {`import { Tab, Tabs } from 'react-fluid-tabs';
 
 function App() {
   return (
@@ -364,7 +364,7 @@ function App() {
                   showLineNumbers={false}
                 >
                   {`import { useRef } from 'react';
-import { Tab, Tabs } from 'react-swipeable-tabs';
+import { Tab, Tabs } from 'react-fluid-tabs';
 
 function AnimatedTabs() {
   const indicatorRef = useRef<HTMLDivElement>(null);

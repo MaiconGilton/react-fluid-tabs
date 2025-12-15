@@ -1,6 +1,6 @@
 import { Home, Search, User } from 'lucide-react';
 import { useRef } from 'react';
-import { Tab, Tabs } from 'react-swipeable-tabs';
+import { Tab, Tabs } from 'react-fluid-tabs';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import vscDarkPlus from 'react-syntax-highlighter/dist/esm/styles/prism/vsc-dark-plus';
 import { MobileLogo } from '../components/Logo';
@@ -306,7 +306,7 @@ export const MobileAppExample = ({
 
 const EXAMPLE_CODE = `import { Home, Search, User } from 'lucide-react';
 import { useRef } from 'react';
-import { Tab, Tabs } from 'react-swipeable-tabs';
+import { Tab, Tabs } from 'react-fluid-tabs';
 import { MobileLogo } from '../components/Logo';
 
 // --- Content Components ---

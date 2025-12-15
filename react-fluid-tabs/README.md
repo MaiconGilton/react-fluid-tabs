@@ -1,14 +1,14 @@
-# React Swipeable Tabs
+# React Fluid Tabs
 
 A highly performant, accessible, and swipeable tab component for React that mimics native mobile gestures.
 
-![License](https://img.shields.io/npm/l/react-swipeable-tabs)
+![License](https://img.shields.io/npm/l/react-fluid-tabs)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue)
-![Size](https://img.shields.io/bundlephobia/minzip/react-swipeable-tabs)
+![Size](https://img.shields.io/bundlephobia/minzip/react-fluid-tabs)
 
-**react-swipeable-tabs** brings the fluid feel of native mobile tabs to the web. It features real-time 1:1 swipe tracking, smooth interruptions, and fully customizable animations, all while maintaining strict accessibility standards.
+**react-fluid-tabs** brings the fluid feel of native mobile tabs to the web. It features real-time 1:1 swipe tracking, smooth interruptions, and fully customizable animations, all while maintaining strict accessibility standards.
 
-📚 **[View Full Documentation](https://maicongilton.github.io/react-swipeable-tabs/)**
+📚 **[View Full Documentation](https://maicongilton.github.io/react-fluid-tabs/)**
 
 ## Features
 
@@ -22,17 +22,17 @@ A highly performant, accessible, and swipeable tab component for React that mimi
 ## Installation
 
 ```bash
-npm install react-swipeable-tabs
+npm install react-fluid-tabs
 # or
-yarn add react-swipeable-tabs
+yarn add react-fluid-tabs
 # or
-pnpm add react-swipeable-tabs
+pnpm add react-fluid-tabs
 ```
 
 ## Quick Start
 
 ```tsx
-import { Tab, Tabs } from 'react-swipeable-tabs';
+import { Tab, Tabs } from 'react-fluid-tabs';
 
 function App() {
   return (
@@ -129,7 +129,7 @@ To implement a sliding indicator (like Material UI or iOS Segments), use the `on
 
 ```tsx
 import { useRef } from 'react';
-import { Tab, Tabs } from 'react-swipeable-tabs';
+import { Tab, Tabs } from 'react-fluid-tabs';
 
 function AnimatedTabs() {
   const indicatorRef = useRef<HTMLDivElement>(null);

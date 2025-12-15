@@ -11,5 +11,5 @@ export default defineConfig({
       plugins: [tailwindcss, autoprefixer],
     },
   },
-  base: 'react-swipeable-tabs',
+  base: 'react-fluid-tabs',
 });

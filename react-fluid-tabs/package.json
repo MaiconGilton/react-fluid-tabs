@@ -1,14 +1,14 @@
 {
-  "name": "@maicongilton/react-swipeable-tabs",
-  "version": "0.1.2",
+  "name": "react-fluid-tabs",
+  "version": "0.0.1",
   "type": "module",
-  "main": "./dist/react-swipeable-tabs.umd.js",
-  "module": "./dist/react-swipeable-tabs.es.js",
+  "main": "./dist/react-fluid-tabs.umd.js",
+  "module": "./dist/react-fluid-tabs.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/react-swipeable-tabs.es.js",
-      "require": "./dist/react-swipeable-tabs.umd.js",
+      "import": "./dist/react-fluid-tabs.es.js",
+      "require": "./dist/react-fluid-tabs.umd.js",
       "types": "./dist/index.d.ts"
     }
   },

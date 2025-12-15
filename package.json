@@ -1,13 +1,13 @@
 {
-  "name": "react-swipeable-tabs-monorepo",
+  "name": "react-fluid-tabs-monorepo",
   "private": true,
   "workspaces": [
-    "react-swipeable-tabs",
+    "react-fluid-tabs",
     "docs"
   ],
   "scripts": {
     "dev": "npm run dev --workspace=docs",
-    "dev:package": "npm run dev --workspace=react-swipeable-tabs",
+    "dev:package": "npm run dev --workspace=react-fluid-tabs",
     "build": "npm run build --workspaces",
     "lint": "npx @biomejs/biome lint .",
     "format": "npx @biomejs/biome format --write .",
