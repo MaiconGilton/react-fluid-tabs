@@ -107,61 +107,69 @@ const ProfileContent = ({ isDesktop = false }: { isDesktop?: boolean }) => (
 // --- Layouts ---
 
 const DesktopLayout = () => {
-  const [activeTab, setActiveTab] = useState('feed');
-
   return (
-    <div className="h-full bg-white dark:bg-[#111] flex flex-col font-sans">
-      <div className="flex flex-col h-full">
-        <div className="border-b border-gray-200 dark:border-[#333]">
-          <div className="max-w-6xl mx-auto px-8 flex items-center h-16 gap-8">
-            <div className="flex items-center gap-2 mr-4">
-              <MobileLogo className="w-8 h-8 text-primary" />
-              <span className="font-bold text-xl tracking-tight text-gray-900 dark:text-white">
-                App
-              </span>
-            </div>
-
-            {/* Desktop Navigation */}
-            <div className="flex h-full relative space-x-8">
-              {[
-                { value: 'feed', label: 'Feed' },
-                { value: 'search', label: 'Search' },
-                { value: 'profile', label: 'Profile' },
-              ].map(({ value, label }) => {
-                const isActive = activeTab === value;
-                return (
-                  <button
-                    key={value}
-                    onClick={() => setActiveTab(value)}
-                    className="relative h-full flex items-center px-1 cursor-pointer outline-none group"
-                    type="button"
-                  >
-                    <span
-                      className={`text-sm font-medium transition-colors duration-200 ${
-                        isActive
-                          ? 'text-primary'
-                          : 'text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200'
-                      }`}
-                    >
-                      {label}
-                    </span>
-                    {isActive && (
-                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />
-                    )}
-                  </button>
-                );
-              })}
-            </div>
+    <div className="w-full h-full bg-gray-50 dark:bg-[#0a0a0a] overflow-hidden flex flex-col font-sans transition-colors duration-300">
+      <Tabs defaultValue="feed" className="flex flex-col h-full">
+        <div className="bg-white dark:bg-[#111] border-b border-gray-200 dark:border-[#222] px-6 py-3 flex items-center">
+          <div className="flex items-center gap-2 mr-10">
+            <MobileLogo className="w-8 h-8 text-primary" />
+            <span className="font-bold text-xl tracking-tight text-gray-900 dark:text-white">
+              App
+            </span>
           </div>
+
+          <Tabs.Buttons
+            className="flex gap-4 relative"
+            indicatorClassName="bg-indigo-600 dark:bg-indigo-400 rounded-t-full transition-all"
+          >
+            {[
+              { value: 'feed', label: 'Feed' },
+              { value: 'search', label: 'Search' },
+              { value: 'profile', label: 'Profile' },
+            ].map(({ value, label }) => (
+              <Tab.Button
+                key={value}
+                value={value}
+                className="group relative py-2 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors outline-none cursor-pointer"
+              >
+                {({ isActive }) => (
+                  <span
+                    className={
+                      isActive ? 'text-indigo-600 dark:text-indigo-400' : ''
+                    }
+                  >
+                    {label}
+                  </span>
+                )}
+              </Tab.Button>
+            ))}
+          </Tabs.Buttons>
         </div>
 
         {/* Content Area */}
-        <div className="flex-1 bg-gray-50 dark:bg-black/20 overflow-hidden relative overflow-y-auto">
-          {activeTab === 'feed' && <FeedContent isDesktop />}
-          {activeTab === 'search' && <SearchContent isDesktop />}
-          {activeTab === 'profile' && <ProfileContent isDesktop />}
-        </div>
-      </div>
+        <Tabs.Content className="flex-1 overflow-hidden bg-gray-50 dark:bg-[#0a0a0a] relative">
+          <Tab.Page
+            value="overview"
+            className="h-full w-full overflow-y-auto p-6"
+          >
+            <FeedContent isDesktop />
+          </Tab.Page>
+
+          <Tab.Page
+            value="overview"
+            className="h-full w-full overflow-y-auto p-6"
+          >
+            <SearchContent isDesktop />
+          </Tab.Page>
+
+          <Tab.Page
+            value="overview"
+            className="h-full w-full overflow-y-auto p-6"
+          >
+            <ProfileContent isDesktop />
+          </Tab.Page>
+        </Tabs.Content>
+      </Tabs>
     </div>
   );
 };
@@ -491,7 +499,7 @@ export const MobileAppExample = ({
 }) => {
   return (
     <PreviewCodeToggle
-      title=" Mobile Tab Bar Example"
+      title={isMobileView ? 'Mobile Example' : 'Website Example'}
       renderPreview={
         <div
           className={`flex justify-center bg-gradient-to-b from-gray-50 to-gray-100 dark:from-[#111] dark:to-[#0a0a0a] mobile-mockup-wrapper transition-all duration-500 ${

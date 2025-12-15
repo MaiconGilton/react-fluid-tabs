@@ -11,9 +11,7 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import { ThemeToggle } from './components/ThemeToggle';
-import { DashboardExample } from './examples/DashboardExample';
 import { MobileAppExample } from './examples/MobileAppExample';
-import { SimpleTabsExample } from './examples/SimpleTabsExample';
 import './App.css';
 
 function App() {
@@ -77,12 +75,12 @@ function App() {
       </header>
 
       <main>
-        <section className="py-20 text-center">
+        <section className="py-20 pt-40 text-center">
           <div className="container">
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-gray-900 dark:text-white">
-              Fluid feel of native
+              React Swipeable Tabs
               <br />
-              mobile tabs to the web
+              Native-Feeling Tabs for the Web
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8 leading-relaxed">
               A high-performance, swipeable tab component enabling 1:1 touch
@@ -143,14 +141,16 @@ function App() {
             ].map((feature, i) => (
               <div
                 key={i}
-                className="bg-white dark:bg-[#111] border border-gray-200 dark:border-[#333] p-6 rounded-xl hover:border-primary transition-colors group shadow-sm dark:shadow-none"
+                className="bg-white dark:bg-[#111] border border-gray-200 dark:border-[#333] p-6 rounded-xl hover:border-primary dark:hover:border-primary transition-all group shadow-sm dark:shadow-none hover:scale-105"
               >
                 <div className="mb-4 text-gray-500 dark:text-gray-400 group-hover:text-primary transition-colors">
                   <feature.icon size={24} />
                 </div>
+
                 <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-primary transition-colors">
                   {feature.title}
                 </h3>
+
                 <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
                   {feature.description}
                 </p>
@@ -164,8 +164,9 @@ function App() {
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
               <div>
                 <h2 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">
-                  Mobile Application
+                  Application Example
                 </h2>
+
                 <p className="text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed">
                   {isMobileMode
                     ? 'Experience native-like swipe gestures with 1:1 touch tracking and smooth 60fps animations. Try swiping between tabs or using the bottom navigation.'
@@ -192,44 +193,6 @@ function App() {
             <div className="border border-gray-200 dark:border-[#333] rounded-2xl overflow-hidden bg-gray-100 dark:bg-[#1a1a1a] transition-all duration-500">
               <MobileAppExample isMobileView={isMobileMode} />
             </div>
-          </div>
-        </section>
-
-        <section className="py-16 border-t border-gray-200 dark:border-[#333]">
-          <div className="container">
-            <div className="mb-10">
-              <h2 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">
-                Desktop Dashboard
-              </h2>
-              <p className="text-gray-600 dark:text-gray-400">
-                Horizontal tabs with nested tab groups. Shows how the component
-                handles complex layouts and maintains smooth animations across
-                multiple tab levels.
-              </p>
-            </div>
-
-            <div className="border border-gray-200 dark:border-[#333] rounded-2xl overflow-hidden">
-              <div className="h-[600px] overflow-hidden  relative">
-                <DashboardExample />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-16 border-t border-gray-200 dark:border-[#333]">
-          <div className="container">
-            <div className="mb-10">
-              <h2 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">
-                Simple Implementation
-              </h2>
-              <p className="text-gray-600 dark:text-gray-400">
-                Basic tab implementation with code preview. See the minimal
-                setup required and toggle between live preview and source code
-                to understand the API.
-              </p>
-            </div>
-
-            <SimpleTabsExample />
           </div>
         </section>
 
