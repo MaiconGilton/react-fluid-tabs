@@ -21,7 +21,7 @@ function App() {
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText('npm install react-responsive-tabs');
+    navigator.clipboard.writeText('npm install react-swipeable-tabs');
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 2000);
   };
@@ -32,7 +32,7 @@ function App() {
         <div className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <img src="logo.svg" alt="logo" className="size-8" />
-            <span>React Responsive Tabs</span>
+            <span>React Swipeable Tabs</span>
 
             <div className="hidden sm:flex items-center px-2 py-0.5 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10">
               <span className="text-[10px] font-semibold text-gray-500 dark:text-gray-400">
@@ -49,7 +49,7 @@ function App() {
               Docs
             </a>
             <a
-              href="https://github.com/maicongilton/react-responsive-tabs"
+              href="https://github.com/maicongilton/react-swipeable-tabs"
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 bg-gray-900 text-white hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/20 active:scale-95 dark:bg-white dark:text-black dark:hover:bg-gray-200 dark:hover:shadow-white/10"
@@ -96,7 +96,7 @@ function App() {
             >
               <span className="select-none text-primary">$</span>
               <code className="text-gray-900 dark:text-white">
-                npm install react-responsive-tabs
+                npm install react-swipeable-tabs
               </code>
               <button
                 type="button"

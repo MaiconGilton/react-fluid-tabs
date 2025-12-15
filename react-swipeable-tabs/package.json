@@ -1,14 +1,14 @@
 {
-  "name": "react-responsive-tabs",
+  "name": "react-swipeable-tabs",
   "version": "0.1.0",
   "type": "module",
-  "main": "./dist/react-mobile-tabs.umd.js",
-  "module": "./dist/react-mobile-tabs.es.js",
+  "main": "./dist/react-swipeable-tabs.umd.js",
+  "module": "./dist/react-swipeable-tabs.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/react-mobile-tabs.es.js",
-      "require": "./dist/react-mobile-tabs.umd.js",
+      "import": "./dist/react-swipeable-tabs.es.js",
+      "require": "./dist/react-swipeable-tabs.umd.js",
       "types": "./dist/index.d.ts"
     }
   },

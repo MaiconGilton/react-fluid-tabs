@@ -1,9 +1,9 @@
-import { Tab, Tabs } from 'react-responsive-tabs';
+import { Tab, Tabs } from 'react-swipeable-tabs';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import vscDarkPlus from 'react-syntax-highlighter/dist/esm/styles/prism/vsc-dark-plus';
 import PreviewCodeToggle from '../components/PreviewCodeToggle';
 
-const SIMPLE_TABS_CODE = `import { Tabs, Tab } from 'react-responsive-tabs';
+const SIMPLE_TABS_CODE = `import { Tabs, Tab } from 'react-swipeable-tabs';
 
 export const SimpleTabsExample = () => {
   return (

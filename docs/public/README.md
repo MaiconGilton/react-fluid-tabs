@@ -2,11 +2,11 @@
 
 A highly performant, accessible, and swipeable tab component for React that mimics native mobile gestures.
 
-![License](https://img.shields.io/npm/l/react-responsive-tabs)
+![License](https://img.shields.io/npm/l/react-swipeable-tabs)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue)
-![Size](https://img.shields.io/bundlephobia/minzip/react-responsive-tabs)
+![Size](https://img.shields.io/bundlephobia/minzip/react-swipeable-tabs)
 
-**react-responsive-tabs** brings the fluid feel of native mobile tabs to the web. It features real-time 1:1 swipe tracking, smooth interruptions, and fully customizable animations, all while maintaining strict accessibility standards.
+**react-swipeable-tabs** brings the fluid feel of native mobile tabs to the web. It features real-time 1:1 swipe tracking, smooth interruptions, and fully customizable animations, all while maintaining strict accessibility standards.
 
 ## Features
 
@@ -20,17 +20,17 @@ A highly performant, accessible, and swipeable tab component for React that mimi
 ## Installation
 
 ```bash
-npm install react-responsive-tabs
+npm install react-swipeable-tabs
 # or
-yarn add react-responsive-tabs
+yarn add react-swipeable-tabs
 # or
-pnpm add react-responsive-tabs
+pnpm add react-swipeable-tabs
 ```
 
 ## Quick Start
 
 ```tsx
-import { Tab, Tabs } from 'react-responsive-tabs';
+import { Tab, Tabs } from 'react-swipeable-tabs';
 
 function App() {
   return (
@@ -125,7 +125,7 @@ To implement a sliding indicator (like Material UI or iOS Segments), use the `on
 
 ```tsx
 import { useRef } from 'react';
-import { Tab, Tabs } from 'react-responsive-tabs';
+import { Tab, Tabs } from 'react-swipeable-tabs';
 
 function AnimatedTabs() {
   const indicatorRef = useRef<HTMLDivElement>(null);

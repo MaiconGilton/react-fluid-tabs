@@ -15,7 +15,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'ReactMobileTabs',
-      fileName: (format) => `react-mobile-tabs.${format}.js`,
+      fileName: (format) => `react-swipeable-tabs.${format}.js`,
     },
     rollupOptions: {
       external: ['react', 'react-dom'],

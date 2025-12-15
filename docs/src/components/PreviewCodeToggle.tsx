@@ -1,6 +1,6 @@
 import { Code, Eye } from 'lucide-react';
 import type { ReactNode } from 'react';
-import { Tab, Tabs } from 'react-responsive-tabs';
+import { Tab, Tabs } from 'react-swipeable-tabs';
 
 const PreviewCodeToggle = ({
   title,

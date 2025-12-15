@@ -1,13 +1,13 @@
 {
-  "name": "react-mobile-tabs-monorepo",
+  "name": "react-swipeable-tabs-monorepo",
   "private": true,
   "workspaces": [
-    "react-mobile-tabs",
+    "react-swipeable-tabs",
     "docs"
   ],
   "scripts": {
     "dev": "npm run dev --workspace=docs",
-    "dev:package": "npm run dev --workspace=react-mobile-tabs",
+    "dev:package": "npm run dev --workspace=react-swipeable-tabs",
     "build": "npm run build --workspaces",
     "lint": "npx @biomejs/biome lint .",
     "format": "npx @biomejs/biome format --write .",

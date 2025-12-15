@@ -1,6 +1,6 @@
 import { Home, Search, User } from 'lucide-react';
 import { useRef, useState } from 'react';
-import { Tab, Tabs } from 'react-responsive-tabs';
+import { Tab, Tabs } from 'react-swipeable-tabs';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import vscDarkPlus from 'react-syntax-highlighter/dist/esm/styles/prism/vsc-dark-plus';
 import { MobileLogo } from '../components/Logo';
@@ -245,7 +245,7 @@ const MobileLayout = () => {
 
 const EXAMPLE_CODE = `import { Home, Search, User } from 'lucide-react';
 import { useRef, useState } from 'react';
-import { Tab, Tabs } from 'react-responsive-tabs';
+import { Tab, Tabs } from 'react-swipeable-tabs';
 import { MobileLogo } from '../components/Logo';
 
 // --- Content Components ---

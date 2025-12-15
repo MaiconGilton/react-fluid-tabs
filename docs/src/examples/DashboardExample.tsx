@@ -1,5 +1,5 @@
 import { Activity } from 'lucide-react';
-import { Tab, Tabs } from 'react-responsive-tabs';
+import { Tab, Tabs } from 'react-swipeable-tabs';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import vscDarkPlus from 'react-syntax-highlighter/dist/esm/styles/prism/vsc-dark-plus';
 import PreviewCodeToggle from '../components/PreviewCodeToggle';
@@ -159,7 +159,7 @@ const DashboardContent = () => {
 
 const EXAMPLE_CODE = `import { Activity, DollarSign, Layers, TrendingUp, Users } from 'lucide-react';
 import { useRef } from 'react';
-import { Tab, Tabs } from 'react-responsive-tabs';
+import { Tab, Tabs } from 'react-swipeable-tabs';
 
 const DashboardExample = () => {
   const indicatorRef = useRef<HTMLDivElement>(null);
