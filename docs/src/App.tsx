@@ -17,7 +17,16 @@ import { ThemeToggle } from './components/ThemeToggle';
 import './App.css';
 
 function App() {
-  const [isMobileMode, setIsMobileMode] = useState(false);
+  // Detect if user is on a mobile device
+  const [isMobile] = useState(() => {
+    return (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent,
+      ) || window.innerWidth < 768
+    );
+  });
+
+  const [isMobileMode, setIsMobileMode] = useState(isMobile);
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopy = () => {
@@ -30,9 +39,9 @@ function App() {
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       <header className="sticky top-0 z-50 border-b border-gray-200/80 dark:border-white/5 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl transition-all duration-300">
         <div className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 md:gap-3">
             <img src="logo.svg" alt="logo" className="size-8" />
-            <span>React Swipeable Tabs</span>
+            <span className="md:text-lg font-bold">React Swipeable Tabs</span>
 
             <div className="hidden sm:flex items-center px-2 py-0.5 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10">
               <span className="text-[10px] font-semibold text-gray-500 dark:text-gray-400">
@@ -44,7 +53,7 @@ function App() {
           <nav className="flex items-center gap-3">
             <a
               href="#documentation"
-              className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+              className="hidden md:block text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
             >
               Docs
             </a>
@@ -69,7 +78,7 @@ function App() {
                 <title>GitHub</title>
                 <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
               </svg>
-              <span>Star on GitHub</span>
+              <span className="hidden sm:inline">Star on GitHub</span>
             </a>
             <div className="w-px h-6 bg-gray-200 dark:bg-white/10 mx-1" />
             <ThemeToggle />
@@ -78,9 +87,9 @@ function App() {
       </header>
 
       <main>
-        <section className="py-20 pt-40 text-center">
+        <section className="pb-0 md:pb-20 pt-20 md:pt-40 text-center">
           <div className="container">
-            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-gray-900 dark:text-white">
+            <h1 className="text-3xl md:text-6xl font-extrabold tracking-tight mb-4 text-gray-900 dark:text-white">
               React Swipeable Tabs
               <br />
               Native-Feeling Tabs for the Web
@@ -177,20 +186,22 @@ function App() {
                 </p>
               </div>
 
-              <button
-                type="button"
-                onClick={() => setIsMobileMode(!isMobileMode)}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary hover:bg-primary/90 text-white font-medium transition-all shadow-lg hover:shadow-primary/20 active:scale-95"
-              >
-                {isMobileMode ? (
-                  <Monitor size={18} />
-                ) : (
-                  <Smartphone size={18} />
-                )}
-                {isMobileMode
-                  ? 'Switch to Desktop View'
-                  : 'Switch to Mobile Mode'}
-              </button>
+              {!isMobile && (
+                <button
+                  type="button"
+                  onClick={() => setIsMobileMode(!isMobileMode)}
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary hover:bg-primary/90 text-white font-medium transition-all shadow-lg hover:shadow-primary/20 active:scale-95"
+                >
+                  {isMobileMode ? (
+                    <Monitor size={18} />
+                  ) : (
+                    <Smartphone size={18} />
+                  )}
+                  {isMobileMode
+                    ? 'Switch to Desktop View'
+                    : 'Switch to Mobile Mode'}
+                </button>
+              )}
             </div>
 
             <div className="border border-gray-200 dark:border-[#333] rounded-2xl overflow-hidden bg-gray-100 dark:bg-[#1a1a1a] transition-all duration-500">

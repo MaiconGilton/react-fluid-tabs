@@ -264,7 +264,7 @@ export const MobileAppExample = ({
       renderPreview={
         <div
           className={`flex justify-center bg-gradient-to-b from-gray-50 to-gray-100 dark:from-[#111] dark:to-[#0a0a0a] mobile-mockup-wrapper transition-all duration-500 ${
-            isMobileView ? 'p-10' : 'p-0'
+            isMobileView ? 'p-4 md:p-10' : 'p-0'
           }`}
         >
           <div
