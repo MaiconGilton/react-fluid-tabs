@@ -1,6 +1,6 @@
 {
-  "name": "react-swipeable-tabs",
-  "version": "0.1.0",
+  "name": "@maicongilton/react-swipeable-tabs",
+  "version": "0.1.1",
   "type": "module",
   "main": "./dist/react-swipeable-tabs.umd.js",
   "module": "./dist/react-swipeable-tabs.es.js",

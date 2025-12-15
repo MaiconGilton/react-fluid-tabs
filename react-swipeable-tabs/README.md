@@ -8,6 +8,8 @@ A highly performant, accessible, and swipeable tab component for React that mimi
 
 **react-swipeable-tabs** brings the fluid feel of native mobile tabs to the web. It features real-time 1:1 swipe tracking, smooth interruptions, and fully customizable animations, all while maintaining strict accessibility standards.
 
+📚 **[View Full Documentation](https://maicongilton.github.io/react-swipeable-tabs/)**
+
 ## Features
 
 - 👆 **Native-like Gestures**: Real-time 1:1 swipe tracking with resistance and velocity handling.
