@@ -31,13 +31,15 @@ export const TabsContent: React.FC<TabsContentProps> = ({
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchCurrent, setTouchCurrent] = useState<number | null>(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [directionLock, setDirectionLock] = useState<
+    'vertical' | 'horizontal' | null
+  >(null);
 
   // Calculate index
   const activeIndex = tabsOrder.indexOf(activeTab);
   const count = tabsOrder.length;
 
   const touchStartY = useRef<number | null>(null);
-  const directionLock = useRef<'vertical' | 'horizontal' | null>(null);
 
   // Calculate current translate
   const getTranslateX = () => {
@@ -65,16 +67,16 @@ export const TabsContent: React.FC<TabsContentProps> = ({
     setTouchStart(x);
     setTouchCurrent(x);
     touchStartY.current = y;
-    directionLock.current = null;
+    setDirectionLock(null);
     setIsDragging(false);
   };
 
   const handleMove = (x: number, y: number, cancelCallback?: () => void) => {
     if (!gesturesEnabled) return;
     // ... (rest of logic relies on touchStart being set, which handleStart controls)
-    if (directionLock.current === 'vertical') return;
+    if (directionLock === 'vertical') return;
 
-    if (directionLock.current === 'horizontal') {
+    if (directionLock === 'horizontal') {
       if (cancelCallback) cancelCallback();
       setTouchCurrent(x);
 
@@ -91,14 +93,16 @@ export const TabsContent: React.FC<TabsContentProps> = ({
     if (touchStart !== null && touchStartY.current !== null) {
       const diffX = Math.abs(x - touchStart);
       const diffY = Math.abs(y - touchStartY.current);
-      const moveThreshold = 10;
+      const moveThreshold = 5; // Lowered from 10 for faster detection
 
       if (diffX > moveThreshold || diffY > moveThreshold) {
-        if (diffY > diffX) {
-          directionLock.current = 'vertical';
-        } else {
-          directionLock.current = 'horizontal';
+        // Favor horizontal swipes: if diffX is at least 60% of diffY, treat as horizontal
+        if (diffX >= diffY * 0.6) {
+          setDirectionLock('horizontal');
           setIsDragging(true);
+          if (cancelCallback) cancelCallback();
+        } else {
+          setDirectionLock('vertical');
         }
       }
     }
@@ -106,7 +110,7 @@ export const TabsContent: React.FC<TabsContentProps> = ({
 
   const handleEnd = () => {
     if (!gesturesEnabled) return;
-    directionLock.current = null;
+    setDirectionLock(null);
     touchStartY.current = null;
 
     if (!isDragging || touchStart === null || touchCurrent === null) {
@@ -191,7 +195,11 @@ export const TabsContent: React.FC<TabsContentProps> = ({
       className={className}
       style={{
         overflow: 'hidden',
-        touchAction: gesturesEnabled ? 'pan-y' : 'auto',
+        touchAction: gesturesEnabled
+          ? directionLock === 'horizontal'
+            ? 'none'
+            : 'pan-y'
+          : 'auto',
         cursor: gesturesEnabled
           ? isDragging
             ? 'grabbing'
@@ -218,19 +226,28 @@ export const TabsContent: React.FC<TabsContentProps> = ({
           transition: isDragging ? 'none' : 'transform 0.3s ease-out',
           height: '100%',
         }}
+        data-swiping={directionLock === 'horizontal' ? 'true' : 'false'}
       >
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child)) {
+            const isSwiping = directionLock === 'horizontal';
             return (
               <div
                 style={{
                   width: count > 0 ? `${100 / count}%` : '100%',
                   flexShrink: 0,
                   height: '100%',
+                  overflow: isSwiping ? 'hidden' : 'visible',
+                  touchAction: isSwiping ? 'none' : 'auto',
                 }}
               >
                 {React.cloneElement(child as ReactElement<any>, {
-                  style: { height: '100%', width: '100%' },
+                  style: {
+                    height: '100%',
+                    width: '100%',
+                    overflow: isSwiping ? 'hidden' : undefined,
+                    touchAction: isSwiping ? 'none' : undefined,
+                  },
                 })}
               </div>
             );

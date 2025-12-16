@@ -4,17 +4,18 @@ import {
   Copy,
   Fingerprint,
   Heart,
-  Monitor,
+  Maximize2,
   Palette,
-  Smartphone,
   Zap,
 } from 'lucide-react';
 import { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import vscDarkPlus from 'react-syntax-highlighter/dist/esm/styles/prism/vsc-dark-plus';
-import { MobileAppExample } from './components/MobileAppExample';
+import { MobileLayout } from './components/AppExample';
+import { FullScreenModal } from './components/FullScreenModal';
 import { ThemeToggle } from './components/ThemeToggle';
 import './App.css';
+import { AppExample } from './components/AppExample';
 
 function App() {
   // Detect if user is on a mobile device
@@ -26,8 +27,8 @@ function App() {
     );
   });
 
-  const [isMobileMode, setIsMobileMode] = useState(isMobile);
   const [isCopied, setIsCopied] = useState(false);
+  const [isFullScreenOpen, setIsFullScreenOpen] = useState(false);
 
   const handleCopy = () => {
     navigator.clipboard.writeText('npm install react-fluid-tabs');
@@ -180,33 +181,32 @@ function App() {
                 </h2>
 
                 <p className="text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed">
-                  {isMobileMode
-                    ? 'Experience native-like swipe gestures with 1:1 touch tracking and smooth 60fps animations. Try swiping between tabs or using the bottom navigation.'
-                    : 'Desktop layout with horizontal tab navigation. Both modes use the same Tabs component—just styled differently. Toggle to mobile mode to see swipeable navigation with bottom tabs.'}
+                  Imagine a desktop layout with horizontal tab navigation as the
+                  example below. Navigate throught it and then change to Mobile
+                  Mode to see the difference.
                 </p>
               </div>
 
-              {!isMobile && (
+              <div className="flex items-center gap-3">
                 <button
                   type="button"
-                  onClick={() => setIsMobileMode(!isMobileMode)}
+                  onClick={() => setIsFullScreenOpen(true)}
                   className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary hover:bg-primary/90 text-white font-medium transition-all shadow-lg hover:shadow-primary/20 active:scale-95"
                 >
-                  {isMobileMode ? (
-                    <Monitor size={18} />
-                  ) : (
-                    <Smartphone size={18} />
-                  )}
-                  {isMobileMode
-                    ? 'Switch to Desktop View'
-                    : 'Switch to Mobile Mode'}
+                  <Maximize2 size={18} />
+                  See Mobile Mode
                 </button>
-              )}
+              </div>
             </div>
 
-            <div className="border border-gray-200 dark:border-[#333] rounded-2xl overflow-hidden bg-gray-100 dark:bg-[#1a1a1a] transition-all duration-500">
-              <MobileAppExample isMobileView={isMobileMode} />
+            <div className="border border-gray-200 dark:border-[#333] rounded-2xl overflow-hidden bg-gray-100 dark:bg-[#1a1a1a] transition-all duration-500 mb-10">
+              <AppExample />
             </div>
+
+            <p>
+              Both modes use the same Tabs components, just styled differently
+              based on user device.
+            </p>
           </div>
         </section>
 
@@ -729,6 +729,14 @@ function AnimatedTabs() {
           for the React community.
         </p>
       </footer>
+
+      {/* Full Screen Modal */}
+      <FullScreenModal
+        isOpen={isFullScreenOpen}
+        onClose={() => setIsFullScreenOpen(false)}
+      >
+        <MobileLayout isMobile={isMobile} />
+      </FullScreenModal>
     </div>
   );
 }
