@@ -46,7 +46,7 @@ function App() {
 
             <div className="hidden sm:flex items-center px-2 py-0.5 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10">
               <span className="text-[10px] font-semibold text-gray-500 dark:text-gray-400">
-                v0.1.0
+                v0.0.9
               </span>
             </div>
           </div>
