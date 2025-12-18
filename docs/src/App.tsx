@@ -408,6 +408,86 @@ function AnimatedTabs() {
               </div>
             </div>
 
+            {/* URL-Driven Tabs */}
+            <div className="mb-16">
+              <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+                URL-Driven Tabs
+              </h3>
+
+              <p className="text-gray-600 dark:text-gray-400 mb-6">
+                Enable deep linking and browser history integration by
+                synchronizing tab state with the URL. Perfect for shareable
+                links and bookmarkable tab states.
+              </p>
+
+              <div className="bg-[#1e1e1e] rounded-xl overflow-hidden border border-gray-200 dark:border-[#333] mb-6">
+                <SyntaxHighlighter
+                  language="tsx"
+                  style={vscDarkPlus}
+                  customStyle={{
+                    margin: 0,
+                    padding: '24px',
+                    borderRadius: 0,
+                    fontSize: '14px',
+                  }}
+                  showLineNumbers={false}
+                >
+                  {`// Hash Mode - Uses URL hash (e.g., #profile)
+<Tabs defaultValue="home" urlMode="hash">
+  <Tabs.Buttons>
+    <Tab.Button value="home">Home</Tab.Button>
+    <Tab.Button value="profile">Profile</Tab.Button>
+    <Tab.Button value="settings">Settings</Tab.Button>
+  </Tabs.Buttons>
+
+  <Tabs.Content>
+    <Tab.Page value="home">Home Content</Tab.Page>
+    <Tab.Page value="profile">Profile Content</Tab.Page>
+    <Tab.Page value="settings">Settings Content</Tab.Page>
+  </Tabs.Content>
+</Tabs>
+
+// Query Mode - Uses query parameters (e.g., ?tab=profile)
+<Tabs defaultValue="home" urlMode="query" urlParam="section">
+  <Tabs.Buttons>
+    <Tab.Button value="home">Home</Tab.Button>
+    <Tab.Button value="profile">Profile</Tab.Button>
+  </Tabs.Buttons>
+
+  <Tabs.Content>
+    <Tab.Page value="home">Home Content</Tab.Page>
+    <Tab.Page value="profile">Profile Content</Tab.Page>
+  </Tabs.Content>
+</Tabs>`}
+                </SyntaxHighlighter>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-white dark:bg-[#111] border border-gray-200 dark:border-[#333] p-4 rounded-lg">
+                  <h5 className="font-semibold text-sm mb-2 text-gray-900 dark:text-white">
+                    ✨ Features
+                  </h5>
+                  <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                    <li>• Deep linking support</li>
+                    <li>• Browser back/forward navigation</li>
+                    <li>• Bookmarkable tab states</li>
+                    <li>• SSR-safe implementation</li>
+                  </ul>
+                </div>
+
+                <div className="bg-white dark:bg-[#111] border border-gray-200 dark:border-[#333] p-4 rounded-lg">
+                  <h5 className="font-semibold text-sm mb-2 text-gray-900 dark:text-white">
+                    🔗 URL Examples
+                  </h5>
+                  <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1 font-mono">
+                    <li>Hash: example.com/#profile</li>
+                    <li>Query: example.com/?tab=profile</li>
+                    <li>Custom: example.com/?section=home</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
             {/* API Reference */}
             <div className="mb-10">
               <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
@@ -486,7 +566,7 @@ function AnimatedTabs() {
                       <td className="py-2 px-3">Swipe threshold in pixels.</td>
                     </tr>
 
-                    <tr>
+                    <tr className="border-b border-gray-100 dark:border-[#222]">
                       <td className="py-2 px-3 font-mono text-xs">
                         gesturesEnabled
                       </td>
@@ -494,6 +574,50 @@ function AnimatedTabs() {
                       <td className="py-2 px-3 font-mono text-xs">true</td>
                       <td className="py-2 px-3">
                         Whether swipe gestures are enabled.
+                      </td>
+                    </tr>
+
+                    <tr className="border-b border-gray-100 dark:border-[#222]">
+                      <td className="py-2 px-3 font-mono text-xs">urlMode</td>
+                      <td className="py-2 px-3 font-mono text-xs">
+                        'hash' | 'query' | 'none'
+                      </td>
+                      <td className="py-2 px-3 font-mono text-xs">'none'</td>
+                      <td className="py-2 px-3">
+                        URL synchronization mode. Use 'hash' for #tab, 'query'
+                        for ?tab=value.
+                      </td>
+                    </tr>
+
+                    <tr className="border-b border-gray-100 dark:border-[#222]">
+                      <td className="py-2 px-3 font-mono text-xs">urlParam</td>
+                      <td className="py-2 px-3 font-mono text-xs">string</td>
+                      <td className="py-2 px-3 font-mono text-xs">'tab'</td>
+                      <td className="py-2 px-3">
+                        Query parameter name when urlMode='query'.
+                      </td>
+                    </tr>
+
+                    <tr className="border-b border-gray-100 dark:border-[#222]">
+                      <td className="py-2 px-3 font-mono text-xs">updateUrl</td>
+                      <td className="py-2 px-3 font-mono text-xs">boolean</td>
+                      <td className="py-2 px-3 font-mono text-xs">true</td>
+                      <td className="py-2 px-3">
+                        Whether to update URL when tabs change.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td className="py-2 px-3 font-mono text-xs">
+                        historyMode
+                      </td>
+                      <td className="py-2 px-3 font-mono text-xs">
+                        'push' | 'replace'
+                      </td>
+                      <td className="py-2 px-3 font-mono text-xs">'push'</td>
+                      <td className="py-2 px-3">
+                        Browser history behavior. 'push' adds entries, 'replace'
+                        updates current.
                       </td>
                     </tr>
                   </tbody>

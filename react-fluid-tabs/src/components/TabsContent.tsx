@@ -1,6 +1,7 @@
 import React, {
   type ReactElement,
   type TouchEvent,
+  useEffect,
   useRef,
   useState,
 } from 'react';
@@ -27,6 +28,9 @@ export const TabsContent: React.FC<TabsContentProps> = ({
   } = useTabs();
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Track initial mount to prevent animation on first render
+  const isInitialMount = useRef(true);
+
   // Touch state
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchCurrent, setTouchCurrent] = useState<number | null>(null);
@@ -40,6 +44,16 @@ export const TabsContent: React.FC<TabsContentProps> = ({
   const count = tabsOrder.length;
 
   const touchStartY = useRef<number | null>(null);
+
+  // Set isInitialMount to false after first paint completes
+  useEffect(() => {
+    // Use requestAnimationFrame to ensure this runs after the browser paints
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        isInitialMount.current = false;
+      });
+    });
+  }, []);
 
   // Calculate current translate
   const getTranslateX = () => {
@@ -223,7 +237,10 @@ export const TabsContent: React.FC<TabsContentProps> = ({
           display: 'flex',
           width: `${count * 100}%`,
           transform: `translateX(${getTranslateX()})`,
-          transition: isDragging ? 'none' : 'transform 0.3s ease-out',
+          transition:
+            isDragging || isInitialMount.current
+              ? 'none'
+              : 'transform 0.3s ease-out',
           height: '100%',
         }}
         data-swiping={directionLock === 'horizontal' ? 'true' : 'false'}

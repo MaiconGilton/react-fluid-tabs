@@ -68,6 +68,11 @@ The root component that manages state.
 | `lazy` | `boolean` | `false` | Whether to lazy load tab pages. |
 | `threshold` | `number` | `50` | Swipe threshold in pixels. |
 | `gesturesEnabled` | `boolean` | `true` | Whether swipe gestures are enabled. |
+| `urlMode` | `'hash' \| 'query' \| 'none'` | `'none'` | URL synchronization mode. Use `'hash'` for URL hash (e.g., `#feed`), `'query'` for query parameters (e.g., `?tab=feed`), or `'none'` to disable. |
+| `urlParam` | `string` | `'tab'` | Query parameter name when using `urlMode='query'`. |
+| `updateUrl` | `boolean` | `true` | Whether to update the URL when tabs change. |
+| `historyMode` | `'push' \| 'replace'` | `'push'` | Browser history behavior. Use `'push'` to add new entries or `'replace'` to replace current entry. |
+
 
 ### `<Tabs.Buttons>`
 Container for the tab triggers.
@@ -168,6 +173,88 @@ function AnimatedTabs() {
   );
 }
 ```
+
+## URL-Driven Tabs
+
+Enable deep linking and browser history integration by synchronizing tab state with the URL. This allows users to share links to specific tabs and use browser back/forward navigation.
+
+### Hash Mode
+
+Use URL hash fragments (e.g., `#profile`) for tab navigation. This works without any server configuration.
+
+```tsx
+import { Tab, Tabs } from 'react-fluid-tabs';
+
+function App() {
+  return (
+    <Tabs defaultValue="home" urlMode="hash">
+      <Tabs.Buttons>
+        <Tab.Button value="home">Home</Tab.Button>
+        <Tab.Button value="profile">Profile</Tab.Button>
+        <Tab.Button value="settings">Settings</Tab.Button>
+      </Tabs.Buttons>
+
+      <Tabs.Content>
+        <Tab.Page value="home">Home Content</Tab.Page>
+        <Tab.Page value="profile">Profile Content</Tab.Page>
+        <Tab.Page value="settings">Settings Content</Tab.Page>
+      </Tabs.Content>
+    </Tabs>
+  );
+}
+```
+
+**URL Examples:**
+- `https://example.com/#home`
+- `https://example.com/#profile`
+- `https://example.com/#settings`
+
+### Query Parameter Mode
+
+Use query parameters (e.g., `?tab=profile`) for cleaner URLs.
+
+```tsx
+<Tabs defaultValue="home" urlMode="query" urlParam="section">
+  <Tabs.Buttons>
+    <Tab.Button value="home">Home</Tab.Button>
+    <Tab.Button value="profile">Profile</Tab.Button>
+  </Tabs.Buttons>
+
+  <Tabs.Content>
+    <Tab.Page value="home">Home Content</Tab.Page>
+    <Tab.Page value="profile">Profile Content</Tab.Page>
+  </Tabs.Content>
+</Tabs>
+```
+
+**URL Examples:**
+- `https://example.com/?section=home`
+- `https://example.com/?section=profile`
+
+### History Mode
+
+Control how tab changes affect browser history:
+
+```tsx
+// Default: adds new history entries (users can go back)
+<Tabs defaultValue="home" urlMode="hash" historyMode="push">
+  {/* ... */}
+</Tabs>
+
+// Replace: updates current entry (no back navigation)
+<Tabs defaultValue="home" urlMode="hash" historyMode="replace">
+  {/* ... */}
+</Tabs>
+```
+
+### Features
+
+- **Deep Linking**: Share URLs that open specific tabs
+- **Browser Navigation**: Back/forward buttons work with tabs
+- **Bookmarking**: Users can bookmark specific tab states
+- **SSR Compatible**: Safely handles server-side rendering
+- **Validation**: Invalid tab values fall back to `defaultValue`
+
 
 ## License
 
