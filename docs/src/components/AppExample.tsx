@@ -180,9 +180,8 @@ export const MobileLayout = ({ isMobile }: { isMobile: boolean }) => {
       <p
         className={`p-8 max-w-[600px] text-center ${isMobile && 'absolute z-20'}`}
       >
-        Experience native-like swipe gestures with 1:1 touch tracking and smooth
-        60fps animations. Try swiping between tabs or using the bottom
-        navigation.
+        Swipe between tabs or use the bottom navigation to see how React Fluid
+        Tabs handles mobile-style navigation.
       </p>
 
       <div

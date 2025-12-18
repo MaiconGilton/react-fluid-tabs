@@ -180,10 +180,12 @@ function App() {
                   Application Example
                 </h2>
 
-                <p className="text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed">
-                  Imagine a desktop layout with horizontal tab navigation as the
-                  example below. Navigate throught it and then change to Mobile
-                  Mode to see the difference.
+                <p className="text-gray-600 dark:text-gray-400 max-w-3xl leading-relaxed">
+                  This example demonstrates how to use React Fluid Tabs as a
+                  controlled navigation component. Tabs are driven by React
+                  state, support swipe gestures out of the box, and render
+                  content declaratively—making them easy to integrate into
+                  real-world React applications.
                 </p>
               </div>
 
