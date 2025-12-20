@@ -33,11 +33,11 @@ jobs:
 
       - name: Install root dependencies
         run: npm ci
-        working-directory: .
+        working-directory: ${{ github.workspace }}
 
       - name: Lint
         run: npm run lint
-        working-directory: .
+        working-directory: ${{ github.workspace }}
 
       - run: npm ci
 
