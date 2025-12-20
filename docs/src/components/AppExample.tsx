@@ -1,10 +1,10 @@
-import { Home, Search, User } from 'lucide-react';
-import { useRef } from 'react';
-import { Tab, Tabs } from 'react-fluid-tabs';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import vscDarkPlus from 'react-syntax-highlighter/dist/esm/styles/prism/vsc-dark-plus';
-import { MobileLogo } from '../components/Logo';
-import PreviewCodeToggle from '../components/PreviewCodeToggle';
+import { Home, Search, User } from 'lucide-react'
+import { useRef, useState } from 'react'
+import { Tab, Tabs } from 'react-fluid-tabs'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import vscDarkPlus from 'react-syntax-highlighter/dist/esm/styles/prism/vsc-dark-plus'
+import { MobileLogo } from '../components/Logo'
+import PreviewCodeToggle from '../components/PreviewCodeToggle'
 
 // --- Content Components ---
 
@@ -42,7 +42,7 @@ const FeedContent = ({ isDesktop }: { isDesktop: boolean }) => (
       ))}
     </div>
   </>
-);
+)
 
 const SearchContent = ({ isDesktop }: { isDesktop: boolean }) => (
   <>
@@ -67,7 +67,7 @@ const SearchContent = ({ isDesktop }: { isDesktop: boolean }) => (
       </div>
     </div>
   </>
-);
+)
 
 const ProfileContent = ({ isDesktop }: { isDesktop: boolean }) => (
   <>
@@ -104,7 +104,7 @@ const ProfileContent = ({ isDesktop }: { isDesktop: boolean }) => (
       </div>
     </div>
   </>
-);
+)
 
 const TabsContent = ({ isDesktop }: { isDesktop: boolean }) => (
   <Tabs.Content className="flex-1 overflow-hidden bg-gray-200 dark:bg-[#0a0a0a] relative">
@@ -120,7 +120,7 @@ const TabsContent = ({ isDesktop }: { isDesktop: boolean }) => (
       <ProfileContent isDesktop={isDesktop} />
     </Tab.Page>
   </Tabs.Content>
-);
+)
 // --- Layouts ---
 
 const DesktopLayout = () => {
@@ -167,11 +167,20 @@ const DesktopLayout = () => {
         <TabsContent isDesktop />
       </Tabs>
     </div>
-  );
-};
+  )
+}
 
-export const MobileLayout = ({ isMobile }: { isMobile: boolean }) => {
-  const indicatorRef = useRef<HTMLDivElement>(null);
+export const MobileLayout = () => {
+  // Detect if user is on a mobile device
+  const [isMobile] = useState(() => {
+    return (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent,
+      ) || window.innerWidth < 768
+    )
+  })
+
+  const indicatorRef = useRef<HTMLDivElement>(null)
 
   return (
     <div
@@ -202,12 +211,12 @@ export const MobileLayout = ({ isMobile }: { isMobile: boolean }) => {
                 showIndicator={false}
                 onTabIndicatorChange={(rect, shouldAnimate) => {
                   if (indicatorRef.current) {
-                    const indicator = indicatorRef.current;
-                    indicator.style.width = `${rect.width}px`;
-                    indicator.style.transform = `translateX(${rect.left}px)`;
+                    const indicator = indicatorRef.current
+                    indicator.style.width = `${rect.width}px`
+                    indicator.style.transform = `translateX(${rect.left}px)`
                     indicator.style.transition = shouldAnimate
                       ? 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-                      : 'none';
+                      : 'none'
                   }
                 }}
               >
@@ -256,8 +265,8 @@ export const MobileLayout = ({ isMobile }: { isMobile: boolean }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export const AppExample = () => {
   return (
@@ -297,8 +306,8 @@ export const AppExample = () => {
         </SyntaxHighlighter>
       }
     />
-  );
-};
+  )
+}
 
 const EXAMPLE_CODE = `import { Home, Search, User } from 'lucide-react';
 import { useRef } from 'react';
@@ -552,4 +561,4 @@ export const MobileLayout = ({ isMobile }: { isMobile: boolean }) => {
       </div>
     </div>
   );
-};`;
+};`
