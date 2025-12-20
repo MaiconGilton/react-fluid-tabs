@@ -2,8 +2,8 @@ export const MobileLogo = ({
   className = '',
   size = 32,
 }: {
-  className?: string;
-  size?: number;
+  className?: string
+  size?: number
 }) => {
   return (
     <svg
@@ -23,5 +23,5 @@ export const MobileLogo = ({
         strokeLinejoin="round"
       />
     </svg>
-  );
-};
+  )
+}
