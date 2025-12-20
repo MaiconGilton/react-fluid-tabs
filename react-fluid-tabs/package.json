@@ -1,6 +1,6 @@
 {
   "name": "react-fluid-tabs",
-  "version": "0.0.9",
+  "version": "0.0.8",
   "description": "A highly performant, accessible, and swipeable tab component for React that mimics native mobile gestures",
   "type": "module",
   "license": "MIT",
@@ -12,6 +12,7 @@
   "bugs": {
     "url": "https://github.com/MaiconGilton/react-fluid-tabs/issues"
   },
+  "homepage": "ttps://github.com/MaiconGilton/react-fluid-tabs.git#readme",
   "keywords": [
     "react",
     "tabs",
@@ -38,8 +39,7 @@
     "dev": "vite build --watch",
     "build": "tsc && vite build",
     "test": "vitest",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "publish": "npm version patch && npm publish"
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "peerDependencies": {
     "react": "^18.0.0",

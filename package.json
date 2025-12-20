@@ -11,7 +11,10 @@
     "build": "npm run build --workspaces",
     "lint": "npx @biomejs/biome lint .",
     "format": "npx @biomejs/biome format --write .",
-    "check": "npx @biomejs/biome check --write ."
+    "check": "npx @biomejs/biome check --write .",
+    "release:patch": "npm version patch --workspace=react-fluid-tabs && git push origin main --tags",
+    "release:minor": "npm version minor --workspace=react-fluid-tabs && git push origin main --tags",
+    "release:major": "npm version major --workspace=react-fluid-tabs && git push origin main --tags"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.8"
