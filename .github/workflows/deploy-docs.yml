@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "docs/**"
+      - "react-fluid-tabs/**"
 
 permissions:
   contents: write
@@ -19,51 +20,28 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
-    defaults:
-      run:
-        working-directory: docs
-
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/setup-node@v6
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: 'pnpm'
 
-      - name: Configure Git
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Install dependencies
+        run: pnpm install
 
-      - name: Install root dependencies
-        run: npm ci
-        working-directory: ${{ github.workspace }}
+      - name: Build
+        run: pnpm build
 
-      - name: Lint
-        run: npm run lint
-        working-directory: ${{ github.workspace }}
-
-      - run: npm ci
-
-      - name: Build react-fluid-tabs package
-        run: npm run build
-        working-directory: ${{ github.workspace }}/react-fluid-tabs
-
-      - name: Generate Changelog
-        run: npx standard-version
-        continue-on-error: true
-
-      - name: Commit and Push Changes
-        run: |
-          git push --follow-tags origin main
-        continue-on-error: true
-
-      - run: npm run build
-
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: docs/dist
 
