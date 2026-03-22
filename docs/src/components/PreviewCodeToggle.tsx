@@ -1,15 +1,15 @@
-import { Code, Eye } from 'lucide-react';
-import type { ReactNode } from 'react';
-import { Tab, Tabs } from 'react-fluid-tabs';
+import { Code, Eye } from 'lucide-react'
+import type { ReactNode } from 'react'
+import { Tab, Tabs } from 'react-fluid-tabs'
 
 const PreviewCodeToggle = ({
   title,
   renderPreview,
   renderCode,
 }: {
-  title: string;
-  renderPreview: ReactNode;
-  renderCode: ReactNode;
+  title: string
+  renderPreview: ReactNode
+  renderCode: ReactNode
 }) => {
   return (
     <Tabs
@@ -97,6 +97,6 @@ const PreviewCodeToggle = ({
         </Tab.Page>
       </Tabs.Content>
     </Tabs>
-  );
-};
-export default PreviewCodeToggle;
+  )
+}
+export default PreviewCodeToggle

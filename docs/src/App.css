@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -48,7 +48,7 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.mobile-mockup-wrapper .tab-trigger[data-state='active'] {
+.mobile-mockup-wrapper .tab-trigger[data-state="active"] {
   @apply text-[#0070f3];
 }
 

@@ -1,4 +1,4 @@
-import SyntaxHighlighter from 'react-syntax-highlighter';
+import SyntaxHighlighter from 'react-syntax-highlighter'
 
 export const DocumentationSection = () => {
   return (
@@ -585,5 +585,5 @@ function AnimatedTabs() {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}

@@ -1,4 +1,4 @@
-import { Accessibility, Fingerprint, Palette, Zap } from 'lucide-react';
+import { Accessibility, Fingerprint, Palette, Zap } from 'lucide-react'
 
 export const HighlightsSection = () => {
   return (
@@ -49,5 +49,5 @@ export const HighlightsSection = () => {
         ))}
       </div>
     </section>
-  );
-};
+  )
+}

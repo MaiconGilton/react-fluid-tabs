@@ -1,10 +1,10 @@
-import { X } from 'lucide-react';
-import { useEffect } from 'react';
+import { X } from 'lucide-react'
+import { useEffect } from 'react'
 
 interface FullScreenModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  children: React.ReactNode;
+  isOpen: boolean
+  onClose: () => void
+  children: React.ReactNode
 }
 
 export const FullScreenModal = ({
@@ -15,34 +15,34 @@ export const FullScreenModal = ({
   useEffect(() => {
     if (isOpen) {
       // Prevent body scroll when modal is open
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden'
       // Prevent pull-to-refresh on mobile
-      document.body.style.overscrollBehavior = 'none';
+      document.body.style.overscrollBehavior = 'none'
     } else {
-      document.body.style.overflow = '';
-      document.body.style.overscrollBehavior = '';
+      document.body.style.overflow = ''
+      document.body.style.overscrollBehavior = ''
     }
 
     return () => {
-      document.body.style.overflow = '';
-      document.body.style.overscrollBehavior = '';
-    };
-  }, [isOpen]);
+      document.body.style.overflow = ''
+      document.body.style.overscrollBehavior = ''
+    }
+  }, [isOpen])
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen) return
 
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        onClose();
+        onClose()
       }
-    };
+    }
 
-    window.addEventListener('keydown', handleEscape);
-    return () => window.removeEventListener('keydown', handleEscape);
-  }, [isOpen, onClose]);
+    window.addEventListener('keydown', handleEscape)
+    return () => window.removeEventListener('keydown', handleEscape)
+  }, [isOpen, onClose])
 
-  if (!isOpen) return null;
+  if (!isOpen) return null
 
   return (
     <div className="fixed inset-0 z-[9999] bg-white dark:bg-[#111]">
@@ -59,5 +59,5 @@ export const FullScreenModal = ({
       {/* Content - full screen */}
       <div className="w-full h-full">{children}</div>
     </div>
-  );
-};
+  )
+}

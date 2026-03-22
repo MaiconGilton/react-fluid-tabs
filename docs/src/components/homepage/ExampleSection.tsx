@@ -1,10 +1,10 @@
-import { Maximize2 } from 'lucide-react';
-import { AppExample } from '../AppExample';
+import { Maximize2 } from 'lucide-react'
+import { AppExample } from '../AppExample'
 
 export const ExampleSection = ({
   onShowFullScreenExample,
 }: {
-  onShowFullScreenExample: () => void;
+  onShowFullScreenExample: () => void
 }) => {
   return (
     <section className="py-16 border-t border-gray-200 dark:border-[#333]">
@@ -46,6 +46,6 @@ export const ExampleSection = ({
         </p>
       </div>
     </section>
-  );
-};
-export default ExampleSection;
+  )
+}
+export default ExampleSection

@@ -1,7 +1,7 @@
-import react from "@vitejs/plugin-react";
-import autoprefixer from "autoprefixer";
-import tailwindcss from "tailwindcss";
-import { defineConfig } from "vite";
+import react from '@vitejs/plugin-react'
+import autoprefixer from 'autoprefixer'
+import tailwindcss from 'tailwindcss'
+import { defineConfig } from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -11,5 +11,5 @@ export default defineConfig({
       plugins: [tailwindcss, autoprefixer],
     },
   },
-  base: "react-fluid-tabs",
-});
+  base: 'react-fluid-tabs',
+})
