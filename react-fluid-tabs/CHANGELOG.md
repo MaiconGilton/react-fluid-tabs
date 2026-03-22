@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### [0.0.10](https://github.com/MaiconGilton/react-swipeable-tabs/compare/v0.0.9...v0.0.10) (2026-03-22)
+
+
+### Features
+
+* update peer dependencies to include React 19 ([4e222fb](https://github.com/MaiconGilton/react-swipeable-tabs/commit/4e222fb04108299281e1cd415062b393c42da414))
+
 ### [0.0.9](https://github.com/MaiconGilton/react-swipeable-tabs/compare/v0.0.5...v0.0.9) (2026-03-22)
 
 ## [0.0.8] - 2025-12-19

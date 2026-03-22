@@ -1,6 +1,6 @@
 {
   "name": "react-fluid-tabs",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "A highly performant, accessible, and swipeable tab component for React that mimics native mobile gestures",
   "type": "module",
   "license": "MIT",
