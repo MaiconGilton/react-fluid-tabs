@@ -1,0 +1,16 @@
+{
+  "name": "React Fluid Tabs",
+  "short_name": "FluidTabs",
+  "description": "Native-Feeling Tabs for the Web",
+  "start_url": "/react-fluid-tabs/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
