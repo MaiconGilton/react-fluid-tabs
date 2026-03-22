@@ -5,6 +5,20 @@ All notable changes to the documentation site will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### [0.0.5](https://github.com/MaiconGilton/react-fluid-tabs/compare/v0.0.4...v0.0.5) (2026-03-22)
+
+
+### Features
+
+* **docs:** add comprehensive SEO tags, social preview, and manifest ([c874970](https://github.com/MaiconGilton/react-fluid-tabs/commit/c8749709662be0e7a5e37ea6e6a875bc4d1fd05d))
+
+
+### Bug Fixes
+
+* creating pages deployment failed error ([ff2b241](https://github.com/MaiconGilton/react-fluid-tabs/commit/ff2b241f280252934558949bb4bb42b1e8795a31))
+* revert docs version from 0.0.4 to 0.0.3 and update changelog. ([32e5bb7](https://github.com/MaiconGilton/react-fluid-tabs/commit/32e5bb76ae34518d3ba6099c89e79f2603e39eb9))
+* update CI workflows for correct working directories and package build ([9e45dda](https://github.com/MaiconGilton/react-fluid-tabs/commit/9e45ddae05a78b0bd1c444a485a21b4469a15b1a))
+
 ### 0.0.3 (2025-12-20)
 
 
