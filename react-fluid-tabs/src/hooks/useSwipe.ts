@@ -4,11 +4,17 @@ interface UseSwipeOptions {
   onSwipeLeft?: () => void
   onSwipeRight?: () => void
   threshold?: number
+  gesturesEnabled?: boolean
 }
 
 export const useSwipe = (
   ref: React.RefObject<HTMLElement>,
-  { onSwipeLeft, onSwipeRight, threshold = 50 }: UseSwipeOptions,
+  {
+    onSwipeLeft,
+    onSwipeRight,
+    threshold = 50,
+    gesturesEnabled = true,
+  }: UseSwipeOptions,
 ) => {
   const touchStart = useRef<number | null>(null)
   const touchEnd = useRef<number | null>(null)
@@ -21,7 +27,7 @@ export const useSwipe = (
 
   useEffect(() => {
     const element = ref.current
-    if (!element) return
+    if (!element || !gesturesEnabled) return
 
     const onTouchStart = (e: TouchEvent) => {
       touchEnd.current = null
@@ -110,5 +116,5 @@ export const useSwipe = (
       element.removeEventListener('touchmove', onTouchMove)
       element.removeEventListener('touchend', onTouchEnd)
     }
-  }, [ref, onSwipeLeft, onSwipeRight, minSwipeDistance])
+  }, [ref, onSwipeLeft, onSwipeRight, minSwipeDistance, gesturesEnabled])
 }

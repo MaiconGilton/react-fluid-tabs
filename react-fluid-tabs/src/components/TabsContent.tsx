@@ -10,12 +10,19 @@ import { useTabs } from './Tabs'
 export interface TabsContentProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
   className?: string
+  /**
+   * Whether swipe gestures are enabled for this specific tab content.
+   * Inherits from parent <Tabs> component if not provided.
+   * @default true
+   */
+  gesturesEnabled?: boolean
 }
 
 export const TabsContent: React.FC<TabsContentProps> = ({
   children,
   className,
   style,
+  gesturesEnabled: propGesturesEnabled,
   ...props
 }) => {
   const {
@@ -24,8 +31,11 @@ export const TabsContent: React.FC<TabsContentProps> = ({
     tabsOrder,
     notifySwipe,
     threshold,
-    gesturesEnabled,
+    gesturesEnabled: contextGesturesEnabled,
   } = useTabs()
+
+  // Override context with prop if provided
+  const gesturesEnabled = propGesturesEnabled ?? contextGesturesEnabled
   const containerRef = useRef<HTMLDivElement>(null)
 
   // Track initial mount to prevent animation on first render
@@ -110,7 +120,7 @@ export const TabsContent: React.FC<TabsContentProps> = ({
       const moveThreshold = 5 // Lowered from 10 for faster detection
 
       if (diffX > moveThreshold || diffY > moveThreshold) {
-        // Favor horizontal swipes: if diffX is at least 60% of diffY, treat as horizontal
+        // Favor horizontal swipes: if diffX is at least 60% of deltaY, treat as horizontal
         if (diffX >= diffY * 0.6) {
           setDirectionLock('horizontal')
           setIsDragging(true)

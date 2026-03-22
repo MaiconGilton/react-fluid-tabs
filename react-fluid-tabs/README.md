@@ -95,6 +95,7 @@ Wrapper for the swipeable pages.
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `className` | `string` | - | Optional CSS class name. |
+| `gesturesEnabled` | `boolean` | `true` | Override to enable/disable gestures for this content area. |
 
 ### `<Tab.Page>`
 The content for a specific tab.
