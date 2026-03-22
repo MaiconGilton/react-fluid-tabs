@@ -1,8 +1,10 @@
-import React, { type ReactNode } from 'react';
-import { useTabs } from './Tabs';
+import React, { type ReactNode } from "react";
+import { useTabs } from "./Tabs";
 
-export interface TabPageProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> {
+export interface TabPageProps extends Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  "children"
+> {
   value: string;
   children: ReactNode | ((props: { isActive: boolean }) => ReactNode);
   className?: string;
@@ -25,7 +27,7 @@ export const TabPage: React.FC<TabPageProps> = ({
     }
   }, [isActive, hasBeenActive]);
 
-  const isFunctionChild = typeof children === 'function';
+  const isFunctionChild = typeof children === "function";
 
   // Render Logic:
   // 1. If child is a function, we ALWAYS render the wrapper so the function can decide
@@ -42,7 +44,7 @@ export const TabPage: React.FC<TabPageProps> = ({
     <div
       role="tabpanel"
       className={className}
-      data-state={isActive ? 'active' : 'inactive'}
+      data-state={isActive ? "active" : "inactive"}
       data-move-direction={direction}
       style={{
         ...style,

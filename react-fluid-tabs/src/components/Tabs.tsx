@@ -1,4 +1,4 @@
-import type React from 'react';
+import type React from "react";
 import {
   createContext,
   type ReactNode,
@@ -7,14 +7,14 @@ import {
   useEffect,
   useRef,
   useState,
-} from 'react';
+} from "react";
 
 interface TabsContextType {
   activeTab: string;
   setActiveTab: (id: string) => void;
   tabsOrder: string[];
   setTabsOrder: (order: string[]) => void;
-  direction: 'left' | 'right' | null;
+  direction: "left" | "right" | null;
   subscribeSwipe: (
     callback: (progress: number, shouldAnimate: boolean) => void,
   ) => () => void;
@@ -29,13 +29,15 @@ const TabsContext = createContext<TabsContextType | undefined>(undefined);
 export const useTabs = () => {
   const context = useContext(TabsContext);
   if (!context) {
-    throw new Error('useTabs must be used within a TabsProvider');
+    throw new Error("useTabs must be used within a TabsProvider");
   }
   return context;
 };
 
-export interface TabsProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+export interface TabsProps extends Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  "onChange"
+> {
   children: ReactNode;
   defaultValue: string;
   className?: string;
@@ -63,7 +65,7 @@ export interface TabsProps
    * - 'none': No URL synchronization (default)
    * @default 'none'
    */
-  urlMode?: 'hash' | 'query' | 'none';
+  urlMode?: "hash" | "query" | "none";
   /**
    * Query parameter name when using urlMode='query'
    * @default 'tab'
@@ -80,7 +82,7 @@ export interface TabsProps
    * - 'replace': Replaces current history entry
    * @default 'push'
    */
-  historyMode?: 'push' | 'replace';
+  historyMode?: "push" | "replace";
 }
 
 export const Tabs: React.FC<TabsProps> = ({
@@ -91,22 +93,22 @@ export const Tabs: React.FC<TabsProps> = ({
   lazy = false,
   threshold = 50,
   gesturesEnabled = true,
-  urlMode = 'none',
-  urlParam = 'tab',
+  urlMode = "none",
+  urlParam = "tab",
   updateUrl = true,
-  historyMode = 'push',
+  historyMode = "push",
   ...props
 }) => {
   // Helper function to get tab value from URL
   const getTabFromUrl = useCallback((): string | null => {
-    if (typeof window === 'undefined' || urlMode === 'none') return null;
+    if (typeof window === "undefined" || urlMode === "none") return null;
 
-    if (urlMode === 'hash') {
+    if (urlMode === "hash") {
       const hash = window.location.hash.slice(1); // Remove the '#'
       return hash || null;
     }
 
-    if (urlMode === 'query') {
+    if (urlMode === "query") {
       const params = new URLSearchParams(window.location.search);
       return params.get(urlParam);
     }
@@ -117,36 +119,36 @@ export const Tabs: React.FC<TabsProps> = ({
   // Helper function to update URL with tab value
   const updateUrlWithTab = useCallback(
     (tabValue: string) => {
-      if (typeof window === 'undefined' || urlMode === 'none' || !updateUrl) {
+      if (typeof window === "undefined" || urlMode === "none" || !updateUrl) {
         return;
       }
 
       const url = new URL(window.location.href);
 
-      if (urlMode === 'hash') {
+      if (urlMode === "hash") {
         url.hash = tabValue;
-      } else if (urlMode === 'query') {
+      } else if (urlMode === "query") {
         url.searchParams.set(urlParam, tabValue);
       }
 
-      const method = historyMode === 'push' ? 'pushState' : 'replaceState';
-      window.history[method]({}, '', url.toString());
+      const method = historyMode === "push" ? "pushState" : "replaceState";
+      window.history[method]({}, "", url.toString());
     },
     [urlMode, urlParam, updateUrl, historyMode],
   );
 
   // Initialize active tab from URL or defaultValue
   const getInitialActiveTab = (): string => {
-    if (typeof window === 'undefined' || urlMode === 'none') {
+    if (typeof window === "undefined" || urlMode === "none") {
       return defaultValue;
     }
 
-    if (urlMode === 'hash') {
+    if (urlMode === "hash") {
       const hash = window.location.hash.slice(1);
       return hash || defaultValue;
     }
 
-    if (urlMode === 'query') {
+    if (urlMode === "query") {
       const params = new URLSearchParams(window.location.search);
       const urlTab = params.get(urlParam);
       return urlTab || defaultValue;
@@ -156,7 +158,7 @@ export const Tabs: React.FC<TabsProps> = ({
   };
 
   const [activeTab, setActiveTabState] = useState(getInitialActiveTab);
-  const [direction, setDirection] = useState<'left' | 'right' | null>(null);
+  const [direction, setDirection] = useState<"left" | "right" | null>(null);
   const [tabsOrder, setTabsOrder] = useState<string[]>([]);
   const isInternalUpdate = useRef(false);
   const activeTabRef = useRef(activeTab);
@@ -193,7 +195,7 @@ export const Tabs: React.FC<TabsProps> = ({
         const prevIndex = tabsOrder.indexOf(prev);
         const newIndex = tabsOrder.indexOf(id);
         if (prevIndex !== -1 && newIndex !== -1) {
-          setDirection(newIndex > prevIndex ? 'right' : 'left');
+          setDirection(newIndex > prevIndex ? "right" : "left");
         }
         return id;
       });
@@ -215,7 +217,7 @@ export const Tabs: React.FC<TabsProps> = ({
 
   // Listen to browser back/forward navigation
   useEffect(() => {
-    if (typeof window === 'undefined' || urlMode === 'none') return;
+    if (typeof window === "undefined" || urlMode === "none") return;
 
     const handlePopState = () => {
       const urlTab = getTabFromUrl();
@@ -230,13 +232,13 @@ export const Tabs: React.FC<TabsProps> = ({
       }
     };
 
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
   }, [urlMode, getTabFromUrl, tabsOrder, setActiveTab]);
 
   // Sync URL on mount if needed
   useEffect(() => {
-    if (typeof window === 'undefined' || urlMode === 'none') return;
+    if (typeof window === "undefined" || urlMode === "none") return;
 
     const urlTab = getTabFromUrl();
 

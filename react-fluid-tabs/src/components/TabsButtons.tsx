@@ -1,5 +1,5 @@
-import React, { type ReactNode } from 'react';
-import { useTabs } from './Tabs';
+import React, { type ReactNode } from "react";
+import { useTabs } from "./Tabs";
 
 export interface TabsButtonsProps extends React.HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
@@ -96,8 +96,8 @@ export const TabsButtons: React.FC<TabsButtonsProps> = ({
         indicatorRef.current.style.width = `${width}px`;
         indicatorRef.current.style.transform = `translateX(${left}px)`;
         indicatorRef.current.style.transition = shouldAnimate
-          ? 'all 300ms cubic-bezier(0.4, 0, 0.2, 1)'
-          : 'none';
+          ? "all 300ms cubic-bezier(0.4, 0, 0.2, 1)"
+          : "none";
       }
 
       onTabIndicatorChange?.({ left, width }, shouldAnimate);

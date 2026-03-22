@@ -1,9 +1,11 @@
-import type React from 'react';
-import type { ReactNode } from 'react';
-import { useTabs } from './Tabs';
+import type React from "react";
+import type { ReactNode } from "react";
+import { useTabs } from "./Tabs";
 
-export interface TabButtonProps
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'> {
+export interface TabButtonProps extends Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  "children"
+> {
   value: string;
   children: ReactNode | ((props: { isActive: boolean }) => ReactNode);
   className?: string;
@@ -14,7 +16,7 @@ export const TabButton: React.FC<TabButtonProps> = ({
   value,
   children,
   className,
-  activeClassName = 'active',
+  activeClassName = "active",
   onClick,
   ...props
 }) => {
@@ -22,14 +24,14 @@ export const TabButton: React.FC<TabButtonProps> = ({
   const isActive = activeTab === value;
 
   const content =
-    typeof children === 'function' ? children({ isActive }) : children;
+    typeof children === "function" ? children({ isActive }) : children;
 
   return (
     <button
       type="button"
       role="tab"
       aria-selected={isActive}
-      className={`${className || ''} ${isActive ? activeClassName : ''}`}
+      className={`${className || ""} ${isActive ? activeClassName : ""}`}
       onClick={(e) => {
         setActiveTab(value);
         if (onClick) onClick(e);

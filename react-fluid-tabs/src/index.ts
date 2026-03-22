@@ -1,8 +1,8 @@
-import { TabButton } from './components/TabButton';
-import { TabPage } from './components/TabPage';
-import { Tabs as TabsRoot } from './components/Tabs';
-import { TabsButtons } from './components/TabsButtons';
-import { TabsContent } from './components/TabsContent';
+import { TabButton } from "./components/TabButton";
+import { TabPage } from "./components/TabPage";
+import { Tabs as TabsRoot } from "./components/Tabs";
+import { TabsButtons } from "./components/TabsButtons";
+import { TabsContent } from "./components/TabsContent";
 
 // Namespaced Exports
 export const Tabs = Object.assign(TabsRoot, {

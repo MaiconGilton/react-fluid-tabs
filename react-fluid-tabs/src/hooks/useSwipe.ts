@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 interface UseSwipeOptions {
   onSwipeLeft?: () => void;
@@ -101,14 +101,14 @@ export const useSwipe = (
       gestureDetected.current = false;
     };
 
-    element.addEventListener('touchstart', onTouchStart);
-    element.addEventListener('touchmove', onTouchMove, { passive: false });
-    element.addEventListener('touchend', onTouchEnd);
+    element.addEventListener("touchstart", onTouchStart);
+    element.addEventListener("touchmove", onTouchMove, { passive: false });
+    element.addEventListener("touchend", onTouchEnd);
 
     return () => {
-      element.removeEventListener('touchstart', onTouchStart);
-      element.removeEventListener('touchmove', onTouchMove);
-      element.removeEventListener('touchend', onTouchEnd);
+      element.removeEventListener("touchstart", onTouchStart);
+      element.removeEventListener("touchmove", onTouchMove);
+      element.removeEventListener("touchend", onTouchEnd);
     };
   }, [ref, onSwipeLeft, onSwipeRight, minSwipeDistance]);
 };
