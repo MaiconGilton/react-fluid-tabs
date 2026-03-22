@@ -1,5 +1,5 @@
-import { version } from '../../../../react-fluid-tabs/package.json'
-import { ThemeToggle } from '../ThemeToggle'
+import { version } from "../../../../react-fluid-tabs/package.json";
+import { ThemeToggle } from "../ThemeToggle";
 
 export const Header = () => {
   return (
@@ -55,5 +55,5 @@ export const Header = () => {
         </nav>
       </div>
     </header>
-  )
-}
+  );
+};
