@@ -1,6 +1,6 @@
 # Release Process
 
-This project uses [standard-version](https://github.com/conventional-changelog/standard-version) to automate versioning and CHANGELOG generation via GitHub Actions.
+This project uses [standard-version](https://github.com/conventional-changelog/standard-version) to automate versioning and CHANGELOG generation.
 
 ## Prerequisites
 
@@ -9,66 +9,65 @@ This project uses [standard-version](https://github.com/conventional-changelog/s
   - **Types**: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`
   - **Example**: `feat(tabs): add URL-driven navigation support`
 
-## Automated Release Process
+## Release Workflow
 
-Both the package and documentation site have **fully automated** changelog generation and publishing via GitHub Actions.
+The release process is now manual to ensure quality control before publishing, while documentation deployment remains automated via GitHub Actions.
 
-### React-Fluid-Tabs Package
+### 1. Perform a Release (Local)
 
-**Trigger:** Push changes to `react-fluid-tabs/` folder on `main` branch
-
-**What happens automatically:**
-1. GitHub Actions runs `standard-version` to:
-   - Analyze commits since last release
-   - Bump version in `react-fluid-tabs/package.json`
-   - Generate changelog entries in `react-fluid-tabs/CHANGELOG.md`
-   - Create git commit and tag
-2. Builds the package
-3. Publishes to npm registry
-4. Pushes changelog updates back to repository
-
-### Documentation Site
-
-**Trigger:** Push changes to `docs/` folder on `main` branch
-
-**What happens automatically:**
-1. GitHub Actions runs `standard-version` to update `docs/CHANGELOG.md` and `docs/package.json`
-2. Changes are committed and pushed automatically
-3. Docs are built and deployed to GitHub Pages
-
-## How to Release
-
-Simply push your changes to the appropriate folder on the `main` branch:
+When you're ready to create a new version of the package:
 
 ```bash
-# For package changes
-git add react-fluid-tabs/
-git commit -m "feat(tabs): add new feature"
-git push origin main
+# 1. Ensure you're on the latest main branch
+git checkout main
+git pull origin main
 
-# For docs changes
-git add docs/
-git commit -m "docs: update API reference"
-git push origin main
+# 2. Run the release script from the monorepo root
+pnpm release:package
 ```
 
-GitHub Actions will automatically handle versioning, changelog generation, and publishing.
+**What this does automatically:**
+1. Runs `pnpm build` across the entire workspace.
+2. Analyzes your commit messages since the last release.
+3. Bumps the version in `react-fluid-tabs/package.json`.
+4. Generates changelog entries in `react-fluid-tabs/CHANGELOG.md`.
+5. Creates a git commit and a version tag (e.g., `v0.0.11`).
+6. Pushes the commit and tags to the repository.
+
+### 2. Publish to npm (Local)
+
+Once the release is tagged and pushed:
+
+```bash
+pnpm publish:package
+```
+
+This builds the package and publishes it to the npm registry.
+
+### 3. Documentation Deployment (Automated)
+
+**Trigger:** Any push to the `main` branch that modifies `docs/` or `react-fluid-tabs/`.
+
+**What happens automatically:**
+- GitHub Actions detects the change.
+- It installs dependencies using `pnpm`.
+- It builds both the package and the documentation site.
+- It deploys the `docs/dist` folder to GitHub Pages.
+
+> [!TIP]
+> You can also manually trigger a documentation deployment from the **Actions** tab on GitHub using the **"Run workflow"** button.
 
 ## Commit Message Examples
 
 ```bash
 # Features (minor version bump)
 git commit -m "feat(tabs): add swipe gesture support"
-git commit -m "feat(buttons): add indicator customization"
 
 # Bug fixes (patch version bump)
 git commit -m "fix(navigation): resolve browser back button issue"
-git commit -m "fix(animation): prevent transition on initial load"
 
 # Breaking changes (major version bump)
-git commit -m "feat(tabs)!: redesign API for better flexibility
-
-BREAKING CHANGE: The tabs prop structure has changed"
+git commit -m "feat(tabs)!: redesign API for better flexibility"
 
 # Other commits (no version bump)
 git commit -m "docs: update README with new examples"
@@ -77,7 +76,7 @@ git commit -m "chore: update dependencies"
 
 ## Configuration
 
-The release process is configured in `.versionrc.json`:
-- Only bumps version in `react-fluid-tabs/package.json`
-- Updates `react-fluid-tabs/CHANGELOG.md`
-- Skips automatic commit/tag (handled by npm scripts)
+The release process is primarily configured in:
+- `pnpm-workspace.yaml`: Manages the monorepo structure.
+- `.versionrc.json` (root): Defines paths for versioning and changelog generation.
+- `.github/workflows/deploy-docs.yml`: Handles the continuous deployment of the documentation site.
